@@ -1,0 +1,57 @@
+<?php
+if ($this->pageCount): ?>
+    <div class="fg-toolbar tableFooter">
+        <div class="dataTables_info" id="checkAll_info">
+            <?php echo $this->firstItemNumber; ?> - <?php echo $this->lastItemNumber; ?> of <?php echo $this->totalItemCount; ?>
+        </div>
+
+
+
+        <div class="dataTables_paginate paging_full_numbers" id="checkAll_paginate">
+            <!-- First page link -->
+            <?php if (isset($this->previous)): ?>
+                <a class="first paginate_button" tabindex="0" id="checkAll_first" href="?page=<?php echo $this->first; ?>">First</a>
+            <?php else: ?>
+                <a class="first paginate_button paginate_button_disabled" tabindex="0" id="checkAll_first">First</a>
+            <?php endif; ?>
+
+            <!-- end First page link -->
+
+            <!-- Previous page link -->
+            <?php if (isset($this->previous)): ?>
+                <a class="previous paginate_button" tabindex="0" id="checkAll_previous" href="?page=<?php echo $this->previous; ?>">Previous</a>
+            <?php else: ?>
+                <a class="previous paginate_button paginate_button_disabled" tabindex="0" id="checkAll_previous">Previous</a>
+            <?php endif; ?>
+            <!-- end Previous page link -->
+
+<span>
+<?php foreach ($this->pagesInRange as $page): ?>
+    <?php if($page == $this->current) {?>
+        <a class="paginate_active" tabindex="0"><?php echo $page; ?></a>
+    <?php } else {?>
+        <a class="paginate_button" tabindex="0" href="?page=<?php echo $page; ?>"><?php echo $page; ?></a>
+
+    <?php }?>
+<?php endforeach; ?>
+</span>
+
+            <!-- Next page link -->
+            <?php if (isset($this->next)): ?>
+                <a class="next paginate_button" tabindex="0" id="checkAll_next" href="?page=<?php echo $this->next;?>">Next</a>
+            <?php else: ?>
+                <a class="next paginate_button paginate_button_disabled" tabindex="0" id="checkAll_next">Next</a>
+            <?php endif; ?>
+            <!-- end Next page link -->
+
+            <!-- Last page link -->
+            <?php if (isset($this->next)): ?>
+                <a class="last paginate_button" tabindex="0" id="checkAll_last" href="?page=<?php echo $this->last; ?>">Last</a>
+            <?php else: ?>
+                <a class="last paginate_button paginate_button_disabled" tabindex="0" id="checkAll_last">Last</a>
+            <?php endif; ?>
+            <!-- Last page link -->
+        </div>
+
+    </div>
+<?php endif; ?>

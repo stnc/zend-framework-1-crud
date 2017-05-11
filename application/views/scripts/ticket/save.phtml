@@ -1,0 +1,16 @@
+<?php
+
+// Add form action URL
+$this->blogTopicForm->setAction($this->url());
+
+// Add the submit button
+$this->blogTopicForm->addElement(
+    'submit', 'Post Topic', array(
+        'required' => false,
+        'ignore' => true,
+        'label' => 'Post Topic',
+        'class' => 'btn btn-small btn-success'
+    )
+);
+
+echo $this->blogTopicForm;

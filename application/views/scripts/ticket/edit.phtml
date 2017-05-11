@@ -1,0 +1,16 @@
+<?php
+
+// Add form action URL
+$this->blogTopicEditForm->setAction($this->baseURL('ticket/create'));
+
+// Add the edit button
+$this->blogTopicEditForm->addElement(
+    'submit', 'Update Ticket', array(
+        'required' => false,
+        'ignore' => true,
+        'label' => 'Update Ticket',
+        'class' => 'btn btn-small btn-success'
+    )
+);
+
+echo $this->blogTopicEditForm;

@@ -1,0 +1,40 @@
+<?php if (is_array($this->blogTopics) && count($this->blogTopics) >= 1) { ?>
+    <div class="container">
+        <h2> Ticket System v 0.1 </h2>
+
+
+        <p>The zend framework crud operation tutorial (extra upload,pagination,cvs export)</p>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Notes</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <?php foreach ($this->blogTopics as $key => $value) { ?>
+                <tbody>
+                <tr>
+                    <td><?php echo $value->getTitle(); ?></td>
+                    <td><?php echo $this->escape($value->getNotes()); ?></td>
+                    <td><?php echo $this->displayDate($value->getCreatedat()); ?></td>
+                    <td><a href="<?php echo $this->baseURL('ticket/edit/' . $value->getId()); ?>">
+                            <button type="button" class="btn btn-success">Edit</button>
+                        </a>
+                        <a href="<?php echo $this->baseURL('ticket/delete/' . $value->getId()); ?>">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            <?php }
+            echo $this->paginator;
+            ?>
+        </table>
+    </div>
+<?php } else { ?>
+    <div class="alert alert-info">
+        No record found!
+    </div>
+<?php } ?>
