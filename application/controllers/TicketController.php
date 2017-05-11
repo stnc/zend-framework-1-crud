@@ -34,20 +34,43 @@ class TicketController extends Zend_Controller_Action
     public function indexAction()
     {
         $blogTopic = new Application_Model_TicketMapper();
-        $this->view->blogTopics = $blogTopic->fetchAllTopics();
 
 
-        /*   $result = $blogTopic->fetchAllTopics();
-           $this->paginator = Zend_View_Helper_PaginationControl::setDefaultViewPartial('controls.phtml');
-           $paginator = Zend_Paginator::factory($result);
+        $data = $blogTopic->fetchAllTopics();
 
-           $paginator->setItemCountPerPage(2);
-           $paginator->setPageRange(5);
-           $paginator->setCurrentPageNumber($this->_getParam('page'));
-           $this->view->paginator=$paginator;*/
+
+        $page = $this->getRequest()->getParam('page', 0);
+        // $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_Array($data));
+        $paginator = $paginator = Zend_Paginator::factory($data);
+        $paginator->setCurrentPageNumber($page);//This is current page
+        $paginator->setItemCountPerPage(5); //Total number of records per page
+
+
+        /*http://blog.ekini.net/2009/06/22/zend-framework-how-to-use-zend_paginator/
+                    $paginator = Zend_Paginator::factory($data);
+                    $paginator->setItemCountPerPage(5);
+                    $paginator->setCurrentPageNumber($this->_getParam('page'));
+                    $this->view->paginator = $paginator;
+                    Zend_Paginator::setDefaultScrollingStyle('Sliding');
+                    Zend_View_Helper_PaginationControl::setDefaultViewPartial( 'pagination.phtml' //Take note of this, we will be creating this file
+                    );
+
+sources
+        http://blog.ekini.net/2009/06/22/zend-framework-how-to-use-zend_paginator/    and http://fe.ydn.g03.yahoodns.net/ypatterns/navigation/pagination/search.html
+http://www.techfounder.net/2008/06/11/pagination-with-zend_db_select/
+        http://zendgeek.blogspot.com.tr/2009/07/zend-pagination-example.html
+        http://jumnuoy.blogspot.com.tr/2013/06/zend-pagination-example.html
+        http://www.web-technology-experts-notes.in/2015/05/zend-framework-pagination-with-array-adapter-with-code-snippets.html
+        https://akrabat.com/exploring-zend-paginator/
+
+        */
+
+
+        //  $this->view->blogTopics = $blogTopic->fetchAllTopics();
+        $this->view->blogTopics = $paginator;
 
         // For meta title.
-        $this->view->dataname = 'View tickets';
+        $this->view->title = 'View tickets';
     }
 
     /**

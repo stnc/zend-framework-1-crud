@@ -1,4 +1,7 @@
-<?php if (is_array($this->blogTopics) && count($this->blogTopics) >= 1) { ?>
+<?php
+//print_r($this->blogTopics);
+
+if ( count($this->blogTopics) >= 1) { ?>
     <div class="container">
         <h2> Ticket System v 0.1 </h2>
 
@@ -13,7 +16,10 @@
                 <th>Action</th>
             </tr>
             </thead>
-            <?php foreach ($this->blogTopics as $key => $value) { ?>
+            <?php
+            //echo Zend_Version::getLatest();
+
+            foreach ($this->blogTopics as $key => $value) { ?>
                 <tbody>
                 <tr>
                     <td><?php echo $value->getTitle(); ?></td>
@@ -29,7 +35,16 @@
                 </tr>
                 </tbody>
             <?php }
-            echo $this->paginator;
+             if (count($this->paginator)): ?>
+                <ul>
+                    <?php  foreach ($this->paginator as $item): ?>
+                        <li><?php echo $item; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif;
+
+            //This is used for pagination
+            echo $this->paginationControl($this->blogTopics, 'Sliding', 'controls.phtml');
             ?>
         </table>
     </div>

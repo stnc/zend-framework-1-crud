@@ -113,7 +113,7 @@ class Application_Model_TicketMapper
         $select = $this->getDbTable()->select();
         $select->order('id DESC');
 
-        $resultSet = $this->getDbTable()->fetchAll($select);
+         $resultSet = $this->getDbTable()->fetchAll($select);
 
 
         $entries = array();
