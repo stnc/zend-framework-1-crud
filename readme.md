@@ -13,3 +13,5 @@ Not Yet
 version zend version 1.12.20
 <br>
 date 11.05.2017
+
+temizlikyolda.com iş başvurusu için yaptığım bir projeydi tamamen zaman kaybı oldu , birileri yararlansın diye buraya koydum 
