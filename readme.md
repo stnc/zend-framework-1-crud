@@ -1,7 +1,7 @@
 # Zend Framework 1 Crud Application
 ## Zend Framework 1 ticket application extras (upload,pagination,cvs export)
 ## Install and Use 
-zf1app_db.sql database export and ready uses :) 
+zf1app_db.sql database import  and ready uses :) 
 
 ## Documentation 
 Not Yet 
